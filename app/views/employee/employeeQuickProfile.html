@@ -1,0 +1,51 @@
+<div class="employeeRegisteration" id="employeeWrapper">
+  <div class="loadLoginForm" ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="employeeRegisterationForm">
+        <div class="pageTitle"><h2>Register as Employee</h2></div>
+        <form role="form" name="reigstrationForm" ng-submit="employeeProfileCtrl.onRegisterFormSubmit()" class="RegisterEmployeeForm" novalidate>
+           <div class="form-group text-left">
+              <label for="firstName" class="hidden-xs">First Name:</label>
+              <input type="text" class="form-control" name="firstName" id="firstName" ng-model="employeeProfileCtrl.firstName" placeholder="First Name" required/>
+           </div>
+           <div class="form-group text-left">
+              <label for="lastName" class="hidden-xs">Last Name:</label>
+              <input type="text" class="form-control" name="lastName" id="lastName" ng-model="employeeProfileCtrl.lastName" placeholder="Last Name" required/>
+           </div>
+           <div class="form-group text-left">
+              <label for="email" class="hidden-xs">Email:</label>
+              <input type="email" class="form-control" ng-class="emailError? 'redBox': ''" name="email" id="email" ng-model="employeeProfileCtrl.email" placeholder="Email Address" required/>
+           </div>
+           <div class="form-group text-left">
+              <label for="mobile" class="hidden-xs">Mobile:</label>
+              <input type="text" class="form-control" name="mobile" id="mobile" ng-model="employeeProfileCtrl.mobile" placeholder="Mobile" required/>
+           </div>
+           <div class="form-group text-left datePickerClass">
+              <label for="mobile" class="hidden-xs">DOB:</label>
+              <input type="text" class="form-control" uib-datepicker-popup="{{employeeProfileCtrl.format}}" id="dtpDOB" ng-model="employeeProfileCtrl.dt" is-open="employeeProfileCtrl.popup1.opened" datepicker-options="employeeProfileCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="employeeProfileCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+           </div>
+           <div class="form-group text-left">
+              <label for="password" class="hidden-xs">Password:</label>
+              <input type="password" class="form-control" ng-class="passwordError? 'redBox': ''" name="password" id="password" ng-model="employeeProfileCtrl.password" placeholder="Password" required/>
+           </div>
+           <div class="form-group text-left">
+              <label for="confirmPassword" class="hidden-xs">Confirm Password:</label>
+              <input type="password" class="form-control" ng-class="passwordError? 'redBox': ''" name="confirmPassword" id="confirmPassword" ng-model="employeeProfileCtrl.confirmPassword" placeholder="Confirm Password" required/>
+           </div>
+           <div class="form-group text-left">
+              <input type="checkbox" ng-class="termCondtion? 'redBox': ''" name="termCondition" id="termCondition" ng-model="employeeProfileCtrl.termCondition.value" required/>
+              <label for="termCondition" class="hidden-xs">I agree to Terms & Conditions</label>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" class="btnSubmit" ng-disabled="isDisabled" value="Register" title="Register">
+              <input type="button" class="btnCancel" ng-disabled="isDisabled" value="Cancel" title="Cancel">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

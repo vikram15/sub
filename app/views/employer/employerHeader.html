@@ -1,0 +1,56 @@
+
+<div class="header" ng-controller="EmployerHeaderCtrl as employerHeaderCtrl">
+  <div class="row">
+    <div class="col-sm-6 " role="navigation">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo" ui-sref="home">
+      </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+    </div>
+    <div class="LogoutDetail col-sm-6">
+      <div class="pull-left logout dropdown close">
+        <a style="color:black" data-toggle="dropdown" aria-expanded="true">
+          <span class="glyphicon glyphicon-bell"></span>
+        </a>
+        <div style="opacity : 1;margin-top: 9px; height: 250px; width: 230px;" class="dropdown-menu">
+            <div class="arrow" style="min-height: 192px;">
+              <h5>Notifications</h5>
+                <hr>
+                <p class="text-center">No Connections Requests</p>
+                <!-- <p>notifications</p>
+                <p>notifications</p>
+                <p>notifications</p> -->
+             </div>
+             <div class="notification-footer" style="background-color: #16A085;padding: 9px;">
+                    <div class="text-center">
+                      <a style="color:#ffffff; text-shadow : none;">See All</a>
+                    </div>
+            </div>
+          </div>
+      </div>
+      <form ng-submit="employerHeaderCtrl.searchData()">
+        <div class="form-group pull-left">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Job, Company, Location" ng-model="employerHeaderCtrl.searchQuery" />
+            <span class="input-group-addon">
+              <i class="glyphicon glyphicon-search"></i>
+            </span>
+          </div>
+        </div>
+      </form>
+      <div class="pull-left logout dropdown">
+        <a class="dropbtn" >{{user}}<b class="caret"></b></a>
+        <div class="dropdown-content">
+          <a ng-click="employerHeaderCtrl.logout()">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

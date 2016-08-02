@@ -1,0 +1,467 @@
+<div class="employer-dashboard employer-all-pages container-fluid row" id="employerDashboard">
+  <div class="col-sm-9">
+  <h3>Dashboard</h3>
+  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body">
+
+        <div style=" padding-top: 4px;">
+
+          <ul role="tablist" class="nav nav-tabs" id="myTab">
+            <li class="active" role="presentation">
+              <a aria-expanded="true" aria-controls="public" data-toggle="tab"
+                 role="tab" href="" ng-click="employerDashboard.switchTab('publicJobs')">
+                Public Jobs
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="connection" data-toggle="tab"
+                 role="tab" href="" ng-click="employerDashboard.switchTab('connectionJobs')">
+                Job posted by my connections
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="posted" data-toggle="tab"
+                 role="tab" href="" ng-click="employerDashboard.switchTab('postedJobs')">
+                My Job Posts
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="applied" data-toggle="tab"
+                 role="tab" id="jp-con" href="" ng-click="employerDashboard.switchTab('appliedJobs')">
+                Applied Jobs
+              </a>
+            </li>
+          </ul>
+
+          <div class="tab-content jobsCategory" style="padding:0;">
+
+            <div id="publicJobs" style="min-height: 200px;" class="tab-pane active">
+              <div class="" ng-show="employerDashboard.publicJobs.length <= 0">
+                <h4>No Public Jobs Found</h4>
+              </div>
+              <div class="well_look" ng-repeat="job in employerDashboard.publicJobs"
+                   ng-show="employerDashboard.publicJobs.length > 0">
+                <div class="row">
+                  <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                  <div class="col-sm-9">
+                    <div class="row" style="color: #16A085;font-size: 16px;">
+                      <a href="" style="color:#337ab7">{{job.jobTitle}}</a>
+                    </div>
+                    <div class="row">
+                    <span style="font-size: 16px;" class="">
+                      <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                    </span>
+                    </div>
+                    <div class="row">
+                    <span class="col-sm-12" style="padding-left:0px">
+                      <span style="color:#337ab7;padding-left:0px" class="col-sm-3">
+                        <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}} - {{job.expTo}}
+                      </span>
+                      <span class="col-sm-8 margin_bottom" style="color:#337ab7;padding-left:0px">
+                        <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                      </span>
+                    </span>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left:0px">
+                        <div class="col-sm-3" style="padding-left:0px">
+                          <span style="color: #16A085">Key Skills:</span>
+                        </div>
+                        <div class="col-sm-8" style="padding-left:0px">
+                          <span>{{job.skill}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="row">
+                      <p><img class="companylogo" src="images/sample.jpg"></p>
+                    </div>
+                    <div class="row">
+                      <a href="" ng-click="employerDashboard.viewJob(job)" class="btn btn-success btn-md">View Job</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left: 0">
+                        <div class="col-sm-3" style="padding-left:0;">
+                          <span style="color: #16A085;">Description:</span>
+                        </div>
+                        <div>
+                          {{job.jobDesc}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <span class="col-sm-4 center" style="background:#ddd;padding-top:6px;">
+                    Salary: {{job.salaryFrom}} - {{job.salaryTo}}
+                  </span>
+                  <span class="col-sm-4 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">Industry: {{job.industry}}</span>
+                  <span class="col-sm-3 center" style="; margin-left:5px; background:#ddd;padding-top:6px;">Terms: {{job.contractTerms}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div  id="connectionJobs" style="min-height: 200px;" class="tab-pane">
+              <div class="" ng-show="employerDashboard.connectionJobs.length <= 0">
+                <h4>No Jobs Posted By Your Connection</h4>
+              </div>
+              <div class="well_look" ng-repeat="job in employerDashboard.connectionJobs"
+                   ng-show="employerDashboard.connectionJobs.length > 0">
+                <div class="row">
+                  <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                  <div class="col-sm-9">
+                    <div class="row" style="color: #16A085;font-size: 16px;">
+                      <a href="" style="color:#337ab7">{{job.jobTitle}}</a>
+                    </div>
+                    <div class="row">
+                    <span style="font-size: 16px;" class="">
+                      <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                    </span>
+                    </div>
+                    <div class="row">
+                    <span class="col-sm-12" style="padding-left:0px">
+                      <span style="color:#337ab7;padding-left:0px" class="col-sm-3">
+                        <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}} - {{job.expTo}}
+                      </span>
+                      <span class="col-sm-8 margin_bottom" style="color:#337ab7;padding-left:0px">
+                        <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                      </span>
+                    </span>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left:0px">
+                        <div class="col-sm-3" style="padding-left:0px">
+                          <span style="color: #16A085">Key Skills:</span>
+                        </div>
+                        <div class="col-sm-8" style="padding-left:0px">
+                          <span>{{job.skill}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="row">
+                      <p><img class="companylogo" src="images/sample.jpg"></p>
+                    </div>
+                    <div class="row">
+                      <a href="" ng-click="employerDashboard.viewJob(job)" class="btn btn-success btn-md">View Job</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left: 0">
+                        <div class="col-sm-3" style="padding-left:0;">
+                          <span style="color: #16A085;">Description:</span>
+                        </div>
+                        <div>
+                          {{job.jobDesc}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <span class="col-sm-4 center" style="background:#ddd;padding-top:6px;">
+                    Salary: {{job.salaryFrom}} - {{job.salaryTo}}
+                  </span>
+                  <span class="col-sm-4 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">Industry: {{job.industry}}</span>
+                  <span class="col-sm-3 center" style="; margin-left:5px; background:#ddd;padding-top:6px;">Terms: {{job.contractTerms}}</span>
+                </div>
+              </div>
+            </div>
+
+            <div id="postedJobs" style="min-height: 200px;" class="tab-pane">
+              <div class="" ng-show="employerDashboard.postedJobs.length <= 0">
+                <h4>No Jobs Posted By You</h4>
+              </div>
+              <div class="well_look" ng-repeat="job in employerDashboard.postedJobs"
+                   ng-show="employerDashboard.postedJobs.length > 0">
+                <div class="row">
+                  <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                  <div class="col-sm-8">
+                    <div class="row" style="color: #16A085;font-size: 16px;">
+                      <a href="" style="color:#337ab7">{{job.jobTitle}}</a>
+                    </div>
+                    <div class="row">
+                    <span style="font-size: 16px;" class="">
+                      <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                    </span>
+                    </div>
+                    <div class="row">
+                    <span class="col-sm-12" style="padding-left:0px">
+                      <span style="color:#337ab7;padding-left:0px" class="col-sm-3">
+                        <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}} - {{job.expTo}}
+                      </span>
+                      <span class="col-sm-8 margin_bottom" style="color:#337ab7;padding-left:0px">
+                        <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                      </span>
+                    </span>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left:0px">
+                        <div class="col-sm-3" style="padding-left:0px">
+                          <span style="color: #16A085">Key Skills:</span>
+                        </div>
+                        <div class="col-sm-8" style="padding-left:0px">
+                          <span>{{job.skill}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="row">
+                      <p style="float: right;"><img class="companylogo" src="images/sample.jpg"></p>
+                    </div>
+                    <div class="row but">
+                      <button type="button" class="btn btn-primary" ng-click="employerDashboard.listApplied(job)">
+                        Applied <span class="badge">{{job.jobAppliedCount}}</span>
+                      </button>
+                      <a href="" ng-click="employerDashboard.viewJob(job)" class="btn btn-success btn-md">View Job</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left: 0">
+                        <div class="col-sm-3" style="padding-left:0;">
+                          <span style="color: #16A085;">Description:</span>
+                        </div>
+                        <div>
+                          {{job.jobDesc}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <span class="col-sm-4 center" style="background:#ddd;padding-top:6px;">
+                    Salary: {{job.salaryFrom}} - {{job.salaryTo}}
+                  </span>
+                  <span class="col-sm-4 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">Industry: {{job.industry}}</span>
+                  <span class="col-sm-3 center" style="; margin-left:5px; background:#ddd;padding-top:6px;">Terms: {{job.contractTerms}}</span>
+                </div>
+              </div>
+
+            </div>
+
+            <div id="appliedJobs" style="min-height: 200px;" class="tab-pane">
+              <div class="" ng-show="employerDashboard.appliedJobs.length <= 0">
+                <h4>No Jobs Applied By You</h4>
+              </div>
+              <div class="well_look" ng-repeat="job in employerDashboard.appliedJobs"
+                   ng-show="employerDashboard.appliedJobs.length > 0">
+                <div class="row">
+                  <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                  <div class="col-sm-9">
+                    <div class="row" style="color: #16A085;font-size: 16px;">
+                      <a href="" style="color:#337ab7">{{job.jobTitle}}</a>
+                    </div>
+                    <div class="row">
+                    <span style="font-size: 16px;" class="">
+                      <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                    </span>
+                    </div>
+                    <div class="row">
+                    <span class="col-sm-12" style="padding-left:0px">
+                      <span style="color:#337ab7;padding-left:0px" class="col-sm-3">
+                        <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}} - {{job.expTo}}
+                      </span>
+                      <span class="col-sm-8 margin_bottom" style="color:#337ab7;padding-left:0px">
+                        <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                      </span>
+                    </span>
+                    </div>
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left:0px">
+                        <div class="col-sm-3" style="padding-left:0px">
+                          <span style="color: #16A085">Key Skills:</span>
+                        </div>
+                        <div class="col-sm-8" style="padding-left:0px">
+                          <span>{{job.skill}}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-sm-2">
+                    <div class="row">
+                      <p><img class="companylogo" src="images/sample.jpg"></p>
+                    </div>
+                    <div class="row">
+                      <a href="" ng-click="employerDashboard.viewJob(job)" class="btn btn-success btn-md">View Job</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <div class="col-sm-9">
+                    <div class="row">
+                      <div class="col-sm-12" style="padding-left: 0">
+                        <div class="col-sm-3" style="padding-left:0;">
+                          <span style="color: #16A085;">Description:</span>
+                        </div>
+                        <div>
+                          {{job.jobDesc}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <span class="col-sm-1"></span>
+                  <span class="col-sm-4 center" style="background:#ddd;padding-top:6px;">
+                    Salary: {{job.salaryFrom}} - {{job.salaryTo}}
+                  </span>
+                  <span class="col-sm-4 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">Industry: {{job.industry}}</span>
+                  <span class="col-sm-3 center" style="; margin-left:5px; background:#ddd;padding-top:6px;">Terms: {{job.contractTerms}}</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-sm-3 navigation-section">
+  <ul class="list-group">
+    <li class="list-group-item">
+      <img src="images/chart-graph.png" style="width:20px">
+      <span class="text-success">AT-A-GLANCE</span>
+    </li>
+    <li class="list-group-item">
+      <span class="badge">{{employerDashboard.statesData.activeJobCount}}</span>
+      <a ui-sref="employer.viewMyPostedJobs">Active Jobs</a>
+    </li>
+    <li class="list-group-item">
+     <span class="badge">{{employerDashboard.statesData.activeCandidateCount}}</span>
+     <a ui-sref="employer.myCandidates">Active Candidates</a>
+    </li>
+    <li class="list-group-item">
+    <span class="badge">{{employerDashboard.statesData.connectedEmployerCount}}</span>
+    <a ui-sref="employer.myConnection">Connected Employers</a>
+   </li>
+  </ul>
+  <ul class="list-group">
+    <li class="list-group-item"><img src="images/back.png" style="width:20px">
+      <span class="text-success">WHAT'S NEXT</span></li>
+    <li class="list-group-item"><a href="">Post a Job</a></li>
+    <li class="list-group-item"><a href="">Invite your team</a></li>
+    <li class="list-group-item"><a href="">Your Team</a></li>
+  </ul>
+  <ul class="list-group">
+    <li class="list-group-item"><img src="images/list.png" style="width:20px">
+      <span class="text-success">EMPLOYER SUGGESTIONS</span>
+      <ul role="tablist" class="nav nav-tabs " id="myTab">
+        <li class="active" role="presentation">
+          <a aria-expanded="true" aria-controls="public" data-toggle="tab"
+            class="quicklinksMenu" role="tab" href="" ng-click="employerDashboard.switchTabQuickLinks('youMayKnow')">
+            You may know
+          </a>
+        </li>
+        <li role="presentation">
+          <a aria-expanded="true" aria-controls="applied" data-toggle="tab"
+            class="quicklinksMenu" role="tab" id="jp-con" href="" ng-click="employerDashboard.switchTabQuickLinks('recentlySigned')">
+            Recently Signed
+          </a>
+        </li>
+      </ul>
+      <div class="tab-content empSuggestions" style="padding:0;">
+        <div id="youMayKnow" style="min-height: 200px;" class="tab-pane active">
+          <div class="" ng-show="employerDashboard.youMayKnow.length <= 0">
+            <h4>No suggestions</h4>
+          </div>
+          <div class="well_look" ng-repeat="emp in employerDashboard.youMayKnow"
+               ng-show="employerDashboard.youMayKnow.length > 0">
+            <div class="row paddingTop">
+              <div class="col-sm-7">
+                <div class="row" style="color: #16A085;font-size: 14px;">
+                  {{emp.name}}
+                </div>
+                <div class="row">
+                  <span style="font-size: 12px;" class="">
+                    {{emp.industryType}}
+                  </span>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <input type="button" value="Connect" />
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+              <input type="button" value="More..." ng-click="employerDashboard.loadMoreYouMayKnow()" />
+          </div>
+        </div>
+
+        <div id="recentlySigned" style="min-height: 200px;" class="tab-pane">
+          <div class="" ng-show="employerDashboard.signedIn.length <= 0">
+            <h4>No recent signed employer</h4>
+          </div>
+          <div class="well_look" ng-repeat="emp in employerDashboard.signedIn"
+               ng-show="employerDashboard.signedIn.length > 0">
+            <div class="row paddingTop">
+              <div class="col-sm-7">
+                <div class="row" style="color: #16A085;font-size: 14px;">
+                  {{emp.name}}
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <input type="button" value="Connect" ng-click="connectEmployee(emp)"/>
+              </div>
+            </div>
+          </div>
+          <div class="text-right">
+              <input type="button" value="More..." ng-click="employerDashboard.loadMoreRecentSigned()" />
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  <ul class="list-group">
+    <li class="list-group-item"><img src="images/list.png" style="width:20px">
+      <span class="text-success">Recently Job Posted</span></li>
+    <li class="list-group-item" ng-repeat="jobs in employerDashboard.recentJobs">
+      <div class="row">
+        <div class="col-lg-12">
+          <h4 class="text-info"><a href="">{{jobs.jobTitle}}</a></h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6">
+          <span>By:</span>
+        <span class="text-success">{{jobs.employerName}}</span>
+        </div>
+        <div class="col-lg-6">
+          <span>Posted on:</span>
+          <span class="text-success">{{jobs.createdAt}}</span>
+        </div>
+      </div>
+    </li>
+    <li class="list-group-item text-right">
+      <span class="text-success">
+        <input type="button" value="More..." ng-click="employerDashboard.loadMoreRecentJobs()" />
+      </span>
+    </li>
+  </ul>
+</div>
+</div>

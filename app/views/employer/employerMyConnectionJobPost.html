@@ -1,0 +1,80 @@
+<div class="employer-my-connection-posted-jobs employer-all-pages container-fluid row" id="employerMyConnectionPostedJobs">
+  <!-- employerMyPostedJobsCtrl -->
+  <h3>My Connections Posted Jobs</h3>
+  <div class="row">
+    <div class="col-xs-12 separatorJobs" ng-repeat="jobData in employerMyConnectionJobPostCtrl.result">
+      <div class="big-boxes">
+        <div class="row">
+          <div class="col-sm-9 col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="jobTitle job-data">{{jobData.jobTitle}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="aboutCompany job-data">{{jobData.aboutCompany}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="MinMaxYears job-data">
+                  {{jobData.expFrom}} - {{jobData.expTo}},&nbsp;
+                </span>
+                <span class="location job-data">
+                  {{jobData.location}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="skills job-data">
+                  Key skills:
+                </span>
+                <span class="job-data">
+                  {{jobData.skill}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="job-desc job-data">
+                  Job description:
+                </span>
+                <span class="job-data">
+                  {{jobData.jobDesc}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <div class="row">
+                  <div class="col-sm-4 col-xs-12">
+                    <span class="job-data">
+                      Rate Per Hour: {{jobData.rateType}}
+                    </span>
+                  </div>
+                  <div class="col-sm-4 col-xs-12">
+                    <span class="job-data">
+                      Posted By:
+                    </span>
+                  </div>
+                  <div class="col-sm-4 col-xs-12">
+                    <span class="job-data">
+                      Posted On:
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12 text-right">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="dlmButtons">
+                  <img ng-src="images/icon-preview.png" title="View Job" ng-click="employerMyConnectionJobPostCtrl.viewJobOpen(jobData)"/>
+                </span>
+                <span class="dlmButtons">
+                  <img ng-src="images/icon-edit.png" title="Edit Job" />
+                </span>
+                <span class="dlmButtons">
+                  <img ng-src="images/icon-delete.png" title="Delete Job" />
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

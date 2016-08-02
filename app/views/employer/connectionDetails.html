@@ -1,0 +1,237 @@
+<div class="container-fluid row ConnectionDetails">
+  <h3 style="text-align: center">
+    <a href="" style="text-decoration: none; font-weight: bold">
+      {{connectionCtrl.currentConnection.name}}
+    </a>
+  </h3>
+  <div class="panel panel-default">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <div style="float: right;">
+          <div style="border-color: #428bca;">
+            <button class="btn btn-success btn-md" disabled="">
+              <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Connected
+            </button>
+            <button class="btn btn-danger btn-md">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Disconnect
+            </button>
+            <button class="btn btn-warning btn-md">
+              <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span> Add Trusted
+            </button>
+          </div>
+        </div>
+
+        <div style=" padding-top: 4px;">
+          <ul role="tablist" class="nav nav-tabs" id="myTab">
+            <li class="active" role="presentation">
+              <a aria-expanded="true" aria-controls="home" data-toggle="tab" role="tab" href=""
+                 ng-click="connectionCtrl.switchTab('view1')">
+                Main Details
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="Social" data-toggle="tab" role="tab" href=""
+                 ng-click="connectionCtrl.switchTab('view2')">
+                Social Links
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="Expertise" data-toggle="tab" role="tab" href=""
+                 ng-click="connectionCtrl.switchTab('view3')">
+                Expertise
+              </a>
+            </li>
+            <li role="presentation">
+              <a aria-expanded="true" aria-controls="Jobs" data-toggle="tab" role="tab" id="jp-con" href=""
+                 ng-click="connectionCtrl.switchTab('view4')">
+                Jobs of This Employer
+              </a>
+            </li>
+          </ul>
+
+          <div class="tab-content" style="padding:0;">
+            <div id="view1" class="tab-pane active">
+              <div class="user">
+                <div class="col-md-10">
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                    <tr>
+                      <td style="border: 0">User Type :</td>
+                      <td style="border: 0"> Employer</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Industry :</td>
+                      <td style="border: 0">{{connectionCtrl.currentConnection.industryType}}</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Email:</td>
+                      <td style="border: 0"><strong>{{connectionCtrl.currentConnection.email}}</strong></td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Mobile:</td>
+                      <td style="border: 0"><strong>{{connectionCtrl.currentConnection.contactNumber}}</strong></td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Location:</td>
+                      <td style="border: 0">{{connectionCtrl.currentConnection.location}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+
+                  <h4 style="color: #1D7FB0"><i class="glyphicon glyphicon-building"></i> Additional Info</h4>
+                  <h4 id="view_Est">No Company Info Added</h4>
+
+                </div>
+              </div>
+            </div>
+
+            <div id="view2" style="min-height: 200px;" class="tab-pane">
+              <div class="user">
+                <div class="col-md-10">
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                    <tr>
+                      <td style="border: 0">Facebook</td>
+                      <td style="border: 0">
+                        <a ng-href="{{connectionCtrl.currentConnection.facebook}}">
+                          {{connectionCtrl.currentConnection.facebook}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Google Plus</td>
+                      <td style="border: 0">
+                        <a ng-href="{{connectionCtrl.currentConnection.googlePlus}}">
+                          {{connectionCtrl.currentConnection.googlePlus}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Twitter</td>
+                      <td style="border: 0">
+                        <a ng-href="{{connectionCtrl.currentConnection.twitter}}">
+                          {{connectionCtrl.currentConnection.twitter}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Linked In</td>
+                      <td style="border: 0">
+                        <a ng-href="{{connectionCtrl.currentConnection.linkedIn}}">
+                          {{connectionCtrl.currentConnection.linkedIn}}
+                        </a>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Website</td>
+                      <td style="border: 0">
+                        <a ng-href="{{connectionCtrl.currentConnection.website}}">
+                          {{connectionCtrl.currentConnection.website}}
+                        </a>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div id="view3" style="min-height: 200px;" class="tab-pane">
+              <div class="user">
+                <div class="col-md-10">
+                  <strong> <a href=""></a>{{connectionCtrl.currentConnection.name}}</strong>
+                  <table class="table table-striped" style="margin-top: 15px;">
+                    <tbody>
+                    <tr>
+                      <td style="border: 0">Doing Services in</td>
+                      <td style="border: 0">{{connectionCtrl.currentConnection.service}}</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Expert In</td>
+                      <td style="border: 0">{{connectionCtrl.currentConnection.expert}}</td>
+                    </tr>
+                    <tr>
+                      <td style="border: 0">Major client is</td>
+                      <td style="border: 0">{{connectionCtrl.currentConnection.majorClient}}</td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <div id="view4" class="tab-pane">
+              <div id="main_content2">
+                <div class="col-sm-12 each_job_post">
+                  <div class="well_look" ng-repeat="job in connectionCtrl.jobs">
+                    <div class="row">
+                      <p class="col-sm-1" style="width: 5%"><i class="glyphicon glyphicon-bookmark"></i></p>
+
+                      <div class="col-sm-9">
+                        <div class="row  text-capitalize" style="color: #16A085;font-size: 16px;">
+                          <a href="" style="color:#337ab7">{{job.jobTitle}}</a>
+                        </div>
+                        <div class="row">
+                          <span style="font-size: 16px;" class="text-capitalize">{{connectionCtrl.currentConnection.name}}</span>
+                        </div>
+                        <div class="row">
+                          <span class="col-sm-12" style="padding-left:0px">
+                            <span style="padding-left:0px" class="text-capitalize col-sm-3"><i
+                              class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}} - {{job.expTo}}</span>
+                            <span class="col-sm-8 margin_bottom" style="padding-left:0px"><i
+                              class="glyphicon glyphicon-map-marker"></i>{{job.location}}</span>
+                          </span>
+                        </div>
+                        <div class="row">
+                          <div class="col-sm-12" style="padding-left:0px">
+                            <div class="col-sm-3" style="padding-left:0px"><span
+                              style="color: #16A085">Key Skills:</span></div>
+                            <div class="col-sm-8" style="padding-left:0px">
+                              <span>{{job.skill}}</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-2">
+                        <div class="row">
+                          <p><img class="companylogo" src="images/sample.jpg"></p>
+                        </div>
+                        <div class="row">
+                          <a href=""
+                             class="btn btn-success btn-md v_j_b">View Job</a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <span class="col-sm-1" style="width: 5%"></span>
+
+                      <div class="col-sm-2" style="padding-left:0px;"><span style="color: #16A085;">Description:</span>
+                      </div>
+                      <div class="col-sm-9">
+                        {{job.jobDesc}}
+                      </div>
+                    </div>
+                    <div class="row">
+                      <span class="col-sm-1" style="width: 5%"></span>
+                      <span class="col-sm-4 center" style="background:#ddd;padding-top:6px;">
+                        Salary:
+                        <i class="glyphicon glyphicon-usd"></i>
+                        {{job.salaryFrom}} - {{job.salaryTo}}
+                      </span>
+                      <span class="col-sm-4 text-capitalize center" style=" margin-left:5px; background:#ddd;padding-top:6px;">
+                        Industry: {{job.industry}}
+                      </span>
+                      <span class="col-sm-3 center" style="; margin-left:5px; background:#ddd;padding-top:6px;">
+                        Contract: {{job.contractTerms}}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

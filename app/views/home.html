@@ -1,0 +1,164 @@
+<div class="landingPage">
+  <!-- Carousel Data  -->
+  <div class="carousalData" ng-controller="HomeCtrl as homeCtrl">
+    <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" class="activeCarouselDiv">
+      <uib-slide index="0" class="innerSlide" style="background-image:url('images/1.jpg')">
+        <div class="carousel-caption">
+          <!-- Overlay text -->
+          <div class="overLayTexts">
+              <span class="headerOverlay text-left">
+                This is the headline that overlays a full frame photo background.
+              </span>
+              <span class="contentOverlay text-left">
+                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+              </span>
+              <div class="submitButton">
+                <input type="submit" class="btnSubmit" value="Get Started Today">
+              </div>
+          </div>
+          <!-- Job Search  -->
+          <div class="jobsTexts">
+              <div class="jobOverlay text-left">
+                Search jobs, companies and locations
+              </div>
+              <div class="jobContentOverlay text-left">
+                <form role="form" name="searchForm" ng-submit="homeCtrl.onSearchSubmit()" class="searchForm" novalidate>
+                   <div class="form-group text-left">
+                     <input type="text" class="form-control" name="jobType" id="jobType" ng-model="homeCtrl.searchStr" placeholder="Job type, Company name, Location" required/>
+                   </div>
+                   <div class="form-group searchForm text-center">
+                      <input type="submit" class="btnSubmit" ng-disabled="isDisabled" value="Search" title="Search">
+                   </div>
+                </form>
+              </div>
+          </div>
+        </div>
+      </uib-slide>
+      <uib-slide index="1" class="innerSlide" style="background-image:url('images/2.jpg')">
+        <div class="carousel-caption">
+          <div class="overLayTexts forRecruiter">
+            <span class="headerOverlay text-left">
+              Get top IT talent for your project
+            </span>
+            <span class="contentOverlay text-left">
+              Start here to register and search for IT professionals.
+            </span>
+            <div class="submitButton">
+              <input type="submit" class="btnSubmit" value="Recruiter Sign Up" id="btnRecruiterSignUp" ng-click="homeCtrl.recruiterSignup()">
+            </div>
+          </div>
+
+          <div class="overLayTexts forConsultant">
+            <span class="headerOverlay text-left">
+              Get projects for your IT talent
+            </span>
+            <span class="contentOverlay text-left">
+              Start here to register and search for available projects.
+            </span>
+            <div class="submitButton">
+              <input type="submit" class="btnSubmit" value="Consultant Sign Up" id="btnConsultantSignUp" ng-click="homeCtrl.consultantSignup()">
+            </div>
+          </div>
+        </div>
+      </uib-slide>
+      <uib-slide index="2" class="innerSlide" style="background:#fff">
+        <div class="carousel-caption slide3Banner">
+          <div class="overLayTextsSlide3 blackBanner">
+              <span class="headerOverlay text-left">
+                Multimedia presentation explaining the process, etc.
+              </span>
+          </div>
+          <div class="overLayTextsSlide3 whiteBanner">
+              <span class="headerOverlaySlide3 text-left">
+                We are specialize in
+              </span>
+              <div class="specialize">
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 oddSlide3">
+                    Web Development
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 evenSlide3">
+                    Database
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 oddSlide3">
+                  iOS/Android Development
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 evenSlide3">
+                  E-commerce
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 evenSlide3">
+                  System Designs
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 oddSlide3">
+                  Network Administration
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 evenSlide3">
+                  Network Security
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 oddSlide3">
+                  UI/UX Design
+                </div>
+              </div>
+          </div>
+
+        </div>
+      </uib-slide>
+    </uib-carousel>
+  </div>
+  <!-- Logo and Login Detail -->
+  <div class="header">
+    <div class="compSlogan text-center">
+      <span>The B2B IT Resource Exchange</span>
+    </div>
+
+
+    <div class="navbar navbar-default" role="navigation">
+      <div class="logo">
+        <img src="images/logo.png" alt="Logo" ui-sref="home">
+      </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+
+      <div class="collapse navbar-collapse" id="js-navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><a ng-href="#/">Contact Us</a></li>
+          <li><a ng-href="#/">Feedback</a></li>
+          <li><a ng-href="#/">About Us</a></li>
+          <li><a ng-href="#/">FAQ</a></li>
+        </ul>
+
+        <form role="form" name="signInForm" ng-submit="onLoginFormSubmit(signInForm.$valid)" class="form-inline loginForm" novalidate ng-controller="LoginCtrl">
+           <div class="form-group text-left" ng-class="{'has-error' : (signInForm.$submitted || signInForm.email.$touched || submitted) && signInForm.email.$error.required }">
+              <div class="passwordDiv">
+                  <input type="email" class="form-control" name="email" id="email" ng-model="email" placeholder="Email address" ng-required="true"/></div>
+                    <p ng-show="(signInForm.$submitted || signInForm.email.$touched || submitted) && signInForm.email.$error.required" class="help-block">Email is required.</p>
+                    <p ng-show="signInForm.$error.email" class="help-block myerror">Please enter valid email address.</p>
+              <div class="passwordDiv">&nbsp;</div>
+           </div>
+
+           <!-- <div class="errorBox text-left">
+              <span class="errorMsg" ng-show="emailError">Enter valid email</span>
+           </div> -->
+           <div class="form-group text-left" ng-class="{'has-error' : (signInForm.$submitted || signInForm.password.$touched || submitted) && signInForm.password.$error.required}">
+              <div class="passwordDiv"><input type="password" class="form-control" name="password" id="password" ng-model="password" placeholder="Password" ng-required="true"/>
+                <p class="myerror help-block" ng-show="(signInForm.$submitted || signInForm.password.$touched || submitted) && signInForm.password.$error.required">Password is required</p>
+              </div>
+              <div class="passwordDiv text-right"><a ui-sref="forgotPasswordRegisteration" title="Forgot Password" class="forgotPasswordLink">Forgot Password</a></div>
+           </div>
+           <!-- <div class="errorBox text-left">
+              <span class="errorMsg" ng-show="passwordError">Enter valid password</span>
+           </div> -->
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" class="btnSubmit" value="submit" title="Submit">
+              <div class="passwordDiv text-right">&nbsp;</div>
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

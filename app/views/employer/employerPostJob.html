@@ -1,0 +1,288 @@
+<div class="employer-add-new-job employer-all-pages container-fluid" id="employerAddNewJob">
+  <h3>Add New Job</h3>
+  <form id="formEmployerAddNewJob" autocomplete="off" class="row separator" name="newjobForm"
+        novalidate valid-submit="employerAddNewJobCtrl.postNewJob()">
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 employer-fields-section">
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+             ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.jobTitle.$touched || submitted) && newjobForm.jobTitle.$error.required }">
+          <span class="labelValue">Job Title:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <input class="form-control" name="jobTitle" type="text" placeholder="Job Title" id="txtJobTitle" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobTitle" ng-required="true"/>
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.jobTitle.$touched || submitted) && newjobForm.jobTitle.$error.required" class="help-block">Job Title is required.</p>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.JobID.$touched || submitted) && newjobForm.JobID.$error.required }">
+          <span class="labelValue">Job ID:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <input class="form-control" type="text" placeholder="Enter Job ID" id="txtJobId" value="" name="JobID" ng-model="employerAddNewJobCtrl.jobDetailData.JobID" ng-required="true">
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.JobID.$touched || submitted) && newjobForm.JobID.$error.required" class="help-block">You Job ID is required.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Job Description:</span>
+          <span class="textValue">
+            <textarea class="form-control" placeholder="Job Description" id="txtJobDesc" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobDesc"></textarea>
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.location.$touched || submitted) && newjobForm.location.$error.required }">
+          <span class="labelValue">Location:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <input  typeahead-on-select='employerAddNewJobCtrl.doSomething(jobLocation)' id="Autocomplete2" class="form-control" ng-autocomplete options="options" details="details" class="form-control" type="text" placeholder="Location" id="txtJobLocation" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobLocation" name="location" ng-required="true">
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.location.$touched || submitted) && newjobForm.location.$error.required" class="help-block">Location is required.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.skills.$touched || submitted) && newjobForm.skills.$error.required }">
+          <span class="labelValue innerFields">Skills:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <input  placeholder="Skills" id="txtJobSkills" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobSkills" ng-change="employerAddNewJobCtrl.changeInSkillsInput()" class="form-control addNewAppSiteSearchBox {{employerAddNewJobCtrl.inputBoxShowListClass}}" name="skills" ng-required="true"/>
+            <ul class="addNewAppSiteList" ng-show="employerAddNewJobCtrl.isAppSiteListShow === true">
+              <li ng-repeat="item in employerAddNewJobCtrl.appDataList" class="row" ng-click="employerAddNewJobCtrl.appSiteSelectedFromList(item)">
+                  <div class="appName">{{item.skillName}}</div>
+              </li>
+              <li class="{{employerAddNewJobCtrl.searchResultNotFoundClass}}">No search result found</li>
+            </ul>
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.skills.$touched || submitted) && newjobForm.skills.$error.required" class="help-block">Skills is required.</p>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Keywords:</span>
+          <span class="textValue">
+            <textarea class="form-control" placeholder="Keywords" id="txtJobKeywords" value="" ng-model="employerAddNewJobCtrl.jobDetailData.jobKeywords"></textarea>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <span class="labelValue">Experience Range:</span>
+              <span class="textValue">
+                <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.experienceType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.txtExpFrom">
+                  <option value="" selected disabled hidden>From</option>
+                </select>
+              </span>
+            </div>
+            <div class="form-group col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <span class="labelValue">&nbsp;</span>
+              <span class="textValue">
+                <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.experienceType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.txtExpTo">
+                  <option value="" selected disabled hidden>To</option>
+                </select>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Qualifications:</span>
+          <span class="textValue">
+            <input class="form-control" type="text" placeholder="MSC/MCA/BTech/MBA/etc." id="txtQualification" value="" ng-model="employerAddNewJobCtrl.jobDetailData.qualification">
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Number of Positions:</span>
+          <span class="textValue">
+            <input class="form-control" type="number" placeholder="Number of Positions" id="txtNumberPosition" value="" ng-model="employerAddNewJobCtrl.jobDetailData.noOfPositions">
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.employmentType.$touched || submitted) && newjobForm.employmentType.$error.required }">
+          <span class="labelValue">Employment type:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.employmentType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.employmentType" name="employmentType" ng-required="true">
+              <option value="" selected disabled hidden>Select Employement Type</option>
+            </select>
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.employmentType.$touched || submitted) && newjobForm.employmentType.$error.required" class="help-block">Employment type is required.</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Requirement Type:</span>
+          <span class="textValue">
+            <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.requirementType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.requirementType">
+              <option value="" selected disabled hidden>Select Requirement Type</option>
+            </select>
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <span class="labelValue">Currency:</span>
+              <span class="textValue">
+                <select class="form-control" type="text" placeholder="Select Type" id="currency" value="" ng-model="employerAddNewJobCtrl.jobDetailData.currency">
+                  <option value="dollar">$</option>
+                  <option value="rupee">₹</option>
+                </select>
+              </span>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+              <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <span class="labelValue">Salary Range:</span>
+                  <span class="textValue">
+                    <input class="form-control" type="text" placeholder="From" id="txtSalaryRangeFrom" value="" ng-model="employerAddNewJobCtrl.jobDetailData.salaryRangeFrom">
+                  </span>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                  <span class="labelValue">&nbsp;</span>
+                  <span class="textValue">
+                    <input class="form-control" type="text" placeholder="To" id="txtSalaryRangeTo" value="" ng-model="employerAddNewJobCtrl.jobDetailData.salaryRangeTo">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Rate Type:</span>
+          <span class="textValue">
+            <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.rateType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.rateType">
+              <option value="" selected disabled hidden>Select Rate Type</option>
+            </select>
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Contract Terms:</span>
+          <span class="textValue">
+            <select class="form-control" type="text" placeholder="" id="txtContractTerms" value="" ng-model="employerAddNewJobCtrl.jobDetailData.contractTerms">
+              <option value="" selected disabled hidden>Select Contract Terms</option>
+              <option value="Corp to Corp">Corp to Corp</option>
+              <option value="Contract to Hire">Contract to Hire</option>
+              <option value="Contract-w2">Contract-w2</option>
+            </select>
+          </span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="form-group">
+            <span class="labelValue">Industry:</span>
+            <span class="textValue">
+              <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.industryType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.industryType">
+                <option value="" selected disabled hidden>Select an Industry</option>
+              </select>
+            </span>
+          </div>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue innerFields">Function Area:</span>
+          <span class="textValue">
+            <input class="form-control" type="text" placeholder="Functional Area" id="txtFunctionalArea" value="" ng-model="employerAddNewJobCtrl.jobDetailData.functionalArea" />
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Travel Type:</span>
+          <span class="textValue">
+            <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employerAddNewJobCtrl.travelType track by item.masterId" ng-model="employerAddNewJobCtrl.jobDetailData.travelType">
+              <option value="" selected disabled hidden>Select Travel Type</option>
+            </select>
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">End Client Description:</span>
+          <span class="textValue">
+            <input class="form-control" type="text" placeholder="End Client Description" id="txtECD" value="" ng-model="employerAddNewJobCtrl.jobDetailData.endClientDesc" />
+          </span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Job Visibility:</span>
+          <span class="textValue" ng-init="employerAddNewJobCtrl.jobDetailData.jobVisibility = 'Public'">
+            <input type="radio" name="jobVisibility" ng-model="employerAddNewJobCtrl.jobDetailData.jobVisibility" value="Internal">Internal
+            <input type="radio" name="jobVisibility" ng-model="employerAddNewJobCtrl.jobDetailData.jobVisibility" value="My_Network">My Network
+            <input type="radio" name="jobVisibility" ng-model="employerAddNewJobCtrl.jobDetailData.jobVisibility" value="Public" >Public
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <span class="labelValue">Notice Period:</span>
+              <span class="textValue">
+                <select class="form-control" type="text" placeholder="Months" id="txtNoticePeriodMonth" value="" ng-model="employerAddNewJobCtrl.jobDetailData.noticeInMonth">
+                  <option value="">Please Select Month</option>
+                  <option value="oneMonth">One Month</option>
+                  <option value="twoMonth">Two Months</option>
+                  <option value="threeMonth">Three Month</option>
+                </select>
+              </span>
+            </div>
+            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+              <span class="labelValue">In:</span>
+              <span class="textValue">
+                <select class="form-control" type="text" placeholder="Days" id="txtNoticePeriodDays" value="" ng-model="employerAddNewJobCtrl.jobDetailData.noticeInDays">
+                  <option value="">Please Select Days</option>
+                  <option value="7days">7 Days</option>
+                  <option value="14days">14 Days</option>
+                  <option value="21days">21 Days</option>
+                </select>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+          <span class="labelValue">Refresh Job By:</span>
+          <span class="textValue">
+            <select class="form-control" placeholder="Please Select" id="txtRefreshJobBy" value="" ng-model="employerAddNewJobCtrl.jobDetailData.refreshJobBy">
+              <option value="">Please Select</option>
+              <option value="daily">Daily</option>
+              <option value="weekly">Weekly</option>
+              <option value="fortnight">Fortnight</option>
+              <option value="monthly">Monthly</option>
+            </select>
+          </span>
+        </div>
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.jobClosingDate.$touched || submitted) && newjobForm.jobClosingDate.$error.required }">
+          <span class="labelValue">Job Closing Date:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <div class="form-group text-left datePickerClass">
+              <input type="text" class="form-control" name="jobClosingDate" uib-datepicker-popup="{{employerAddNewJobCtrl.format}}" id="dtpPostDate" ng-model="employerAddNewJobCtrl.jobDetailData.dt" is-open="employerAddNewJobCtrl.opened" datepicker-options="employerAddNewJobCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="employerAddNewJobCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </div>
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.jobClosingDate.$touched || submitted) && newjobForm.jobClosingDate.$error.required" class="help-block">Job Closing Date is required.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+        ng-class="{'has-error' : (newjobForm.$submitted || newjobForm.allTeamMember.$touched || submitted) && newjobForm.allTeamMember.$error.required }">
+          <span class="labelValue">Recruiter:<span class="estricSign">*</span></span>
+          <span class="textValue">
+            <select class="form-control" ng-options="item.firstName as item.firstName for item in employerAddNewJobCtrl.allTeamMember track by item.id" ng-model="employerAddNewJobCtrl.jobDetailData.allTeamMember" name="allTeamMember" ng-required="true">
+              <option value="myself" selected disabled hidden>Myself</option>
+            </select>
+          </span>
+          <p ng-show="(newjobForm.$submitted || newjobForm.allTeamMember.$touched || submitted) && newjobForm.allTeamMember.$error.required" class="help-block">Job Closing Date is required.</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 addNewJobForm">
+          <input type="submit" class="btnSubmit"  value="Submit Post" title="Search">
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

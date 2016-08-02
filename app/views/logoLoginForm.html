@@ -1,0 +1,34 @@
+<div class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo" ui-sref="home">
+    </div>
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="js-navbar-collapse">
+      <form role="form" name="signInForm" ng-submit="onLoginFormSubmit(signInForm.$valid)" class="form-inline loginForm" novalidate ng-controller="LoginCtrl" ng-class="{'has-error' : reigstrationForm.email.$invalid && reigstrationForm.email.$pristine && submitted || reigstrationForm.$error.email}">
+         <div class="form-group text-left">
+            <input type="email" class="form-control" name="email" id="email" ng-model="email" placeholder="Email address" required/>
+            <!-- <p ng-show="reigstrationForm.email.$invalid && reigstrationForm.email.$pristine && submitted" class="help-block">Email is required.</p> -->
+            <!-- <p ng-show="reigstrationForm.$error.email" class="help-block">Please enter valid email address.</p> -->
+            <div class="passwordDiv">&nbsp;</div>
+         </div>
+         <div class="form-group text-left">
+            <div class="passwordDiv"><input type="password" class="form-control" name="password" id="password" ng-model="password" placeholder="Password" required/></div>
+            <div class="passwordDiv text-right"><a ui-sref="forgotPasswordRegisteration" title="Forgot Password" class="forgotPasswordLink">Forgot Password</a></div>
+         </div>
+         <div class="form-group signInForm-submitBtnwrapper">
+            <input type="submit" class="btnSubmit" value="Submit" title="Submit">
+            <div class="passwordDiv">&nbsp;</div>
+         </div>
+      </form>
+    </div>
+  </div>
+</div>

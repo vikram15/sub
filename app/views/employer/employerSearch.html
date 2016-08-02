@@ -1,0 +1,84 @@
+<div class="container-fluid row SearchResult">
+  <h3>Search Results</h3>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div>
+        <div class="form-group">
+          <div class="main_content">
+            <h4 ng-show="searchCtrl.jobs.length <= 0">No Results Found</h4>
+            <div class="well_look searched-job" ng-repeat="job in searchCtrl.jobs" ng-show="searchCtrl.jobs.length > 0">
+              <div class="row">
+                <p class="col-sm-1"><i class="glyphicon glyphicon-bookmark"></i></p>
+                <div class="col-sm-9">
+                  <div class="row" style="color: #16A085;font-size: 16px;">
+                    <a href="" style="color:#337ab7">{{job.jobTitle}}</a>
+                  </div>
+                  <div class="row">
+                    <span style="font-size: 16px;" class="">
+                      <a href="" class="dice-btn-link" id="">{{job.aboutCompany}}</a>
+                    </span>
+                  </div>
+                  <div class="row">
+                    <span class="col-sm-12" style="padding-left:0px">
+                      <span style="color:#337ab7;padding-left:0px" class="col-sm-3">
+                        <i class="glyphicon glyphicon-calendar"> </i> {{job.expFrom}} - {{job.expTo}}
+                      </span>
+                      <span class="col-sm-8 margin_bottom" style="color:#337ab7;padding-left:0px">
+                        <i class="glyphicon glyphicon-map-marker"></i> {{job.location}}
+                      </span>
+                    </span>
+                  </div>
+                  <div class="row">
+                    <div class="col-sm-12" style="padding-left:0px">
+                      <div class="col-sm-3" style="padding-left:0px">
+                        <span style="color: #16A085">Key Skills:</span>
+                      </div>
+                      <div class="col-sm-8" style="padding-left:0px">
+                        <span>{{job.skill}}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-sm-2">
+                  <div class="row">
+                    <p><img class="companylogo" src="images/sample.jpg"></p>
+                  </div>
+                  <div class="row">
+                    <a href="" class="btn btn-success btn-md">View Job</a>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <span class="col-sm-1"></span>
+                <div class="col-sm-9">
+                  <div class="row">
+                    <div class="col-sm-12" style="padding-left: 0">
+                      <div class="col-sm-3" style="padding-left:0;">
+                        <span style="color: #16A085;">Description:</span>
+                      </div>
+                      <div>
+                        {{job.jobDesc}}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <span class="col-sm-1"></span>
+                  <span class="col-sm-4 center" style="background:#ddd;padding-top:6px;">
+                    Salary: {{job.salaryFrom}} - {{job.salaryTo}}
+                  </span>
+                <span class="col-sm-4 center" style=" margin-left:5px; background:#ddd;padding-top:6px;">Industry: {{job.industry}}</span>
+                <span class="col-sm-3 center" style="; margin-left:5px; background:#ddd;padding-top:6px;">Terms: {{job.contractTerms}}</span>
+              </div>
+            </div>
+          </div>
+          <div class="row" id="more_button" align="center" ng-show="searchCtrl.jobs.length > 5">
+            <button id="but" class="btn btn-primary">Load More</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
