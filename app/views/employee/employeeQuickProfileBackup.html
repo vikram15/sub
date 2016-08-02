@@ -1,0 +1,60 @@
+<div class="employeeRegisteration" id="employeeWrapper">
+  <div class="loadLoginForm" ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="employeeRegisterationForm">
+        <div class="pageTitle"><h2>Register as Employee</h2></div>
+        <form role="form" name="reigstrationForm" ng-submit="employeeProfileCtrl.onRegisterFormSubmit(reigstrationForm.$valid)" class="RegisterEmployeeForm" novalidate>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.firstName.$invalid && reigstrationForm.firstName.$pristine && submitted }">
+              <label for="firstName" class="hidden-xs">First Name:</label>
+              <input type="text" class="form-control" name="firstName" id="firstName" ng-model="employeeProfileCtrl.firstName" placeholder="First Name" required/>
+              <p ng-show="reigstrationForm.firstName.$invalid && reigstrationForm.firstName.$pristine && submitted" class="help-block">First Name is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.lastName.$invalid && reigstrationForm.lastName.$pristine && submitted }">
+              <label for="lastName" class="hidden-xs">Last Name:</label>
+              <input type="text" class="form-control" name="lastName" id="lastName" ng-model="employeeProfileCtrl.lastName" placeholder="Last Name" required/>
+               <p ng-show="reigstrationForm.lastName.$invalid && reigstrationForm.lastName.$pristine && submitted" class="help-block">Last Name is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.email.$invalid && reigstrationForm.email.$pristine && submitted || reigstrationForm.$error.email}">
+              <label for="email" class="hidden-xs">Email:</label>
+              <input type="email" class="form-control" name="email" id="email" ng-model="employeeProfileCtrl.email" placeholder="Email Address" required/>
+              <p ng-show="reigstrationForm.email.$invalid && reigstrationForm.email.$pristine && submitted" class="help-block">Email is required.</p>
+              <p ng-show="reigstrationForm.$error.email" class="help-block">Please enter valid email address.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.mobile.$invalid && reigstrationForm.mobile.$pristine && submitted }">
+              <label for="mobile" class="hidden-xs">Mobile:</label>
+              <input type="number" class="form-control" name="mobile" id="mobile" ng-model="employeeProfileCtrl.mobile" placeholder="Mobile" required/>
+              <p ng-show="reigstrationForm.mobile.$invalid && reigstrationForm.mobile.$pristine && submitted" class="help-block">Mobile Number is required.</p>
+           </div>
+           <div class="form-group text-left datePickerClass" ng-class="{'has-error' : reigstrationForm.dob.$invalid && reigstrationForm.dob.$pristine && submitted }">
+              <label for="dob" class="hidden-xs">DOB:</label>
+              <input type="text" class="form-control" uib-datepicker-popup="{{employeeProfileCtrl.format}}" id="dtpDOB" ng-model="employeeProfileCtrl.dt" is-open="employeeProfileCtrl.popup1.opened" datepicker-options="employeeProfileCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" name="dob"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="employeeProfileCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+              <p ng-show="reigstrationForm.dob.$invalid && reigstrationForm.dob.$pristine && submitted" class="help-block">Mobile Number is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.password.$invalid && reigstrationForm.password.$pristine && submitted }">
+              <label for="password" class="hidden-xs">Password:</label>
+              <input type="password" class="form-control" name="password" id="txtNewPassword" ng-model="employeeProfileCtrl.password" placeholder="Password" required/>
+              <p ng-show="reigstrationForm.password.$invalid && reigstrationForm.password.$pristine && submitted" class="help-block">Password is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.confirmPassword.$invalid && reigstrationForm.confirmPassword.$pristine && submitted || reigstrationForm.confirmPassword.$error.pwmatch}">
+              <label for="confirmPassword" class="hidden-xs">Confirm Password:</label>
+              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" ng-model="employeeProfileCtrl.confirmPassword" placeholder="Confirm Password" required pw-check="txtNewPassword"/>
+              <p ng-show="reigstrationForm.confirmPassword.$invalid && reigstrationForm.confirmPassword.$pristine && submitted || reigstrationForm.confirmPassword.$error.pwmatch" class="help-block">Passwords don't match.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.termCondition.$invalid && reigstrationForm.termCondition.$pristine && submitted }">
+              <input type="checkbox" name="termCondition" id="termCondition" ng-model="employeeProfileCtrl.termCondition.value" required/>
+              <label for="termCondition" class="hidden-xs">I agree to Terms & Conditions</label>
+              <p ng-show="reigstrationForm.termCondition.$invalid && reigstrationForm.termCondition.$pristine && submitted" class="help-block">Should be check is required.</p>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" class="btnSubmit" value="Register" title="Register">
+              <input type="button" class="btnCancel" value="Cancel" title="Cancel">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

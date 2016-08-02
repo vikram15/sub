@@ -1,0 +1,62 @@
+<div class="employeeRegisteration" id="employeeWrapper">
+  <div class="loadLoginForm" ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="employeeRegisterationForm">
+        <div class="pageTitle"><h2>Register as Employee</h2></div>
+        <form ng-controller="EmployeeRegistrationCtrl as employeeRegistrationCtrl" role="form" name="reigstrationForm" ng-submit="employeeRegistrationCtrl.onRegisterFormSubmit(reigstrationForm.$valid)" class="RegisterEmployeeForm" novalidate>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.firstName.$invalid && reigstrationForm.firstName.$pristine && submitted }">
+              <label for="firstName" class="hidden-xs">First Name:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" name="firstName" id="firstName" ng-model="employeeRegistrationCtrl.firstName" placeholder="First Name" ng-required="true"/>
+              <p ng-show="reigstrationForm.firstName.$invalid && reigstrationForm.firstName.$pristine && submitted" class="help-block">First Name is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.lastName.$invalid && reigstrationForm.lastName.$pristine && submitted }">
+              <label for="lastName" class="hidden-xs">Last Name:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" name="lastName" id="lastName" ng-model="employeeRegistrationCtrl.lastName" placeholder="Last Name" ng-required="true"/>
+               <p ng-show="reigstrationForm.lastName.$invalid && reigstrationForm.lastName.$pristine && submitted" class="help-block">Last Name is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.email.$invalid && reigstrationForm.email.$pristine && submitted || reigstrationForm.$error.email}">
+              <label for="email" class="hidden-xs">Email:<span class="estricSign">*</span></label>
+              <input type="email" class="form-control" name="email" id="email" ng-model="employeeRegistrationCtrl.email" placeholder="Email Address" ng-required="true"/>
+              <p ng-show="reigstrationForm.email.$invalid && reigstrationForm.email.$pristine && submitted" class="help-block">Email is required.</p>
+              <p ng-show="reigstrationForm.$error.email" class="help-block">Please enter valid email address.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.mobile.$invalid && reigstrationForm.mobile.$pristine && submitted }">
+              <label for="mobile" class="hidden-xs">Mobile:<span class="estricSign">*</span></label>
+              <input type="number" class="form-control" name="mobile" id="mobile" ng-pattern="/^[789]\d{9}$/" ng-model="employeeRegistrationCtrl.mobile" placeholder="Mobile" ng-required="true"/>
+              <p ng-show="reigstrationForm.mobile.$invalid && reigstrationForm.mobile.$pristine && submitted" class="help-block">Mobile Number is required.</p>
+              <p class="myerror" ng-show="reigstrationForm.mobile.$error.pattern">Invalid number...!</p>
+           </div>
+           <div class="form-group text-left datePickerClass" ng-class="{'has-error' : reigstrationForm.dob.$invalid && reigstrationForm.dob.$pristine && submitted }">
+              <label for="dob" class="hidden-xs">DOB:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" uib-datepicker-popup="{{employeeRegistrationCtrl.format}}" id="dtpDOB" ng-model="employeeRegistrationCtrl.dt" is-open="employeeRegistrationCtrl.popup1.opened" datepicker-options="employeeRegistrationCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" name="dob"/>
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="employeeRegistrationCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+              <p ng-show="reigstrationForm.dob.$invalid && reigstrationForm.dob.$pristine && submitted" class="help-block">Mobile Number is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.password.$invalid && reigstrationForm.password.$pristine && submitted }">
+              <label for="password" class="hidden-xs">Password:<span class="estricSign">*</span></label>
+              <input type="password" class="form-control" name="password" id="txtNewPassword"  ng-minlength="6" ng-model="employeeRegistrationCtrl.password" placeholder="Password" ng-required="true"/>
+              <p ng-show="reigstrationForm.password.$invalid && reigstrationForm.password.$pristine && submitted" class="help-block">Password is required.</p>
+              <p class="help-block myerror" ng-show="reigstrationForm.password.$error.minlength">Password must minimum of 6 charecter </p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.confirmPassword.$invalid && reigstrationForm.confirmPassword.$pristine && submitted || reigstrationForm.confirmPassword.$error.pwmatch}">
+              <label for="confirmPassword" class="hidden-xs">Confirm Password:<span class="estricSign">*</span></label>
+              <input type="password" class="form-control" name="confirmPassword" id="confirmPassword" ng-model="employeeRegistrationCtrl.confirmPassword" placeholder="Confirm Password" ng-required="true" pw-check="txtNewPassword"/>
+              <p ng-show="reigstrationForm.confirmPassword.$invalid && reigstrationForm.confirmPassword.$pristine && submitted || reigstrationForm.confirmPassword.$error.pwmatch" class="help-block">Passwords don't match.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.termCondition.$invalid && reigstrationForm.termCondition.$pristine && submitted }">
+              <input type="checkbox" name="termCondition" id="termCondition" ng-model="employeeRegistrationCtrl.termCondition.value" ng-required="true"/>
+              <label for="termCondition" class="hidden-xs">I agree to Terms & Conditions:<span class="estricSign">*</span></label>
+              <p ng-show="reigstrationForm.termCondition.$invalid && reigstrationForm.termCondition.$pristine && submitted" class="help-block">Please read terms and conditions and check to accept</p>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" ng-disabled="reigstrationForm.$invalid" class="btnSubmit" value="Register" title="Register">
+              <input type="button" ng-disabled="reigstrationForm.$invalid" class="btnCancel" value="Cancel" title="Cancel">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

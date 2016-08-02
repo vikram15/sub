@@ -1,0 +1,243 @@
+<div class="employer-add-new-job employer-all-pages container-fluid" id="employerAddNewJob">
+  <div ng-controller="LoginCtrl" ng-include src ="'views/logoLoginForm.html'"></div>
+  <div class="section-separator">
+    <h3>Create your profile</h3>
+    <form id="formEmployerAddNewJob" name="employeeFullProfileRegForm" valid-submit="employeeFullProfileCtrl.addCandidateBasicDetail(employeeFullProfileRegForm.$valid)" autocomplete="off" class="row separator" novalidate>
+      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 employer-fields-section">
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          ng-class="{'has-error' : newCandidate.fname.$invalid && newCandidate.fname.$pristine && submitted }">
+            <span class="labelValue">First Name:<span class="estricSign">*</span></span>
+            <span class="textValue">
+              <input class="form-control" ng-disabled="true" type="text" placeholder="First Name" id="txtFirstName" value="" ng-model="employeeFullProfileCtrl.candidateData.firstName">
+            </span>
+            <p ng-show="newCandidate.fname.$invalid && newCandidate.fname.$pristine && submitted" class="help-block">First Name is required.</p>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          ng-class="{'has-error' : newCandidate.lname.$invalid && newCandidate.lname.$pristine && submitted }">
+            <span class="labelValue">Last Name:<span class="estricSign">*</span></span>
+            <span class="textValue">
+              <input class="form-control" ng-disabled="true" type="text" placeholder="Last Name" id="txtLastName" value="" ng-model="employeeFullProfileCtrl.candidateData.lastName">
+            </span>
+            <p ng-show="newCandidate.lname.$invalid && newCandidate.lname.$pristine && submitted" class="help-block">Last Name is required.</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12" ng-class="{'has-error' : employeeFullProfileRegForm.currentLocation.$invalid && employeeFullProfileRegForm.currentLocation.$pristine && submitted }">
+            <span class="labelValue">Current Location:</span>
+            <span class="textValue">
+              <input name="currentLocation" typeahead-on-select='employeeFullProfileCtrl.doSomething(location)' id="Autocomplete2" class="form-control" ng-autocomplete options="options" details="details" class="form-control" type="text" placeholder="Location" id="txtJobLocation" value="" ng-model="employeeFullProfileCtrl.candidateData.location" ng-required="true">
+              <p class="myerror" ng-show="(employeeFullProfileRegForm.$submitted || employeeFullProfileRegForm.currentLocation.$touched  || submitted) && employeeFullProfileRegForm.currentLocation.$error.required">please fill out the field....!</p>
+            </span>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <span class="labelValue">Mobile:</span>
+                <span class="textValue">
+                  <input type="text" class="form-control" ng-disabled="true" placeholder="" id="txtMobileCountryCode" value="" ng-model="employeeFullProfileCtrl.candidateData.countryCode" />
+                </span>
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <span class="labelValue">&nbsp;</span>
+                <span class="textValue">
+                  <input class="form-control" type="text" ng-disabled="true" placeholder="10 Digits Only" id="txtMobileNumber" value="" ng-model="employeeFullProfileCtrl.candidateData.mobileNo">
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="form-group col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <span class="labelValue">Experience:</span>
+                <span class="textValue">
+                  <select class="form-control" placeholder="Select experience" id="selectToalExp" value="" ng-model="employeeFullProfileCtrl.candidateData.experience">
+                    <option value="0">Fresher</option>
+                    <option value="1">1+ Years</option>
+                    <option value="2">2+ Years</option>
+                    <option value="3">3+ Years</option>
+                    <option value="4">4+ Years</option>
+                    <option value="5">5+ Years</option>
+                    <option value="6">6+ Years</option>
+                    <option value="7">7+ Years</option>
+                    <option value="8">8+ Years</option>
+                    <option value="9">9+ Years</option>
+                    <option value="10">10+ Years</option>
+                    <option value="11">11+ Years</option>
+                    <option value="12">12+ Years</option>
+                    <option value="13">13+ Years</option>
+                    <option value="14">14+ Years</option>
+                    <option value="15">15+ Years</option>
+                    <option value="16">16+ Years</option>
+                  </select>
+                </span>
+              </div>
+              <div class="form-group col-lg-9 col-md-9 col-sm-12 col-xs-12"
+              ng-class="{'has-error' : newCandidate.skill.$invalid && newCandidate.skill.$pristine && submitted }">
+                <span class="labelValue innerFields">Skill Set:<span class="estricSign">*</span></span>
+                <span class="textValue">
+                  <input name="skills" placeholder="Skills" id="txtJobSkills" value="" ng-model="employeeFullProfileCtrl.candidateData.jobSkills" ng-change="employeeFullProfileCtrl.changeInSkillsInput()" class="form-control addNewAppSiteSearchBox {{employeeFullProfileCtrl.inputBoxShowListClass}}" ng-required="true"/>
+                  <ul class="addNewAppSiteList" ng-show="employeeFullProfileCtrl.isAppSiteListShow === true">
+                    <li ng-repeat="item in employeeFullProfileCtrl.appDataList" class="row" ng-click="employeeFullProfileCtrl.appSiteSelectedFromList(item)">
+                        <div class="appName">{{item.skillName}}</div>
+                    </li>
+                    <li class="{{employeeFullProfileCtrl.searchResultNotFoundClass}}">No search result found</li>
+                  </ul>
+                </span>
+                <p class="myerror" ng-show="(employeeFullProfileRegForm.$submitted || employeeFullProfileRegForm.skills.$touched  || submitted) && employeeFullProfileRegForm.skills.$error.required">please fill out the field....!</p>
+              </div>
+            </div>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <span class="labelValue">Currency:</span>
+                <span class="textValue">
+                  <select class="form-control" type="text" placeholder="Select Type" id="currency" value="" ng-model="employeeFullProfileCtrl.candidateData.currency">
+                    <option value="dollar">$</option>
+                    <option value="rupee">₹</option>
+                  </select>
+                </span>
+              </div>
+              <div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <span class="labelValue">Annual Salary:</span>
+                    <span class="textValue">
+                      <input class="form-control" type="text" placeholder="Annual Salary" id="txtAnnualSalary" name="txtAnnualSalary" value="" ng-model="employeeFullProfileCtrl.candidateData.annualSalary" ng-required="true"/>
+                      <p class="myerror" ng-show="(employeeFullProfileRegForm.$submitted || employeeFullProfileRegForm.txtAnnualSalary.$touched  || submitted) && employeeFullProfileRegForm.txtAnnualSalary.$error.required">please fill out the field....!</p>
+
+                    </span>
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <span class="labelValue">Hourly Rate:</span>
+                    <span class="textValue">
+                      <input class="form-control" type="text" placeholder="Hourly Rate" id="txtHourlyRate" value="" name="hourlyRate" ng-model="employeeFullProfileCtrl.candidateData.hourlyRate" ng-required="true"/>
+                      <p class="myerror" ng-show="(employeeFullProfileRegForm.$submitted || employeeFullProfileRegForm.hourlyRate.$touched  || submitted) && employeeFullProfileRegForm.hourlyRate.$error.required">please fill out the field....!</p>
+
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="row">
+              <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <span class="labelValue">Email:</span>
+                <span class="textValue">
+                  <input class="form-control" ng-disabled="true" type="text" placeholder="To" id="txtEmail" value="" ng-model="employeeFullProfileCtrl.candidateData.email">
+                </span>
+              </div>
+              <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                <span class="labelValue">Latest Resume:(doc, docx, pdf, rtf, txt)</span>
+                <span class="textValue">
+                  <input class="form-control" type="file" ngf-select ng-model="employeeFullProfileCtrl.candidateData.latestReume" name="file"
+                    ngf-max-size="2MB" ng-required="true" ngf-model-invalid="errorFile" id="btnChooseFile" value="Choose File">
+                    <p class="myerror" ng-show="(employeeFullProfileRegForm.$submitted || employeeFullProfileRegForm.file.$touched  || submitted) && employeeFullProfileRegForm.currentLocation.$error.required">please fill out the field....!</p>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          ng-class="{'has-error' : newCandidate.jobVisibility.$invalid && newCandidate.jobVisibility.$pristine && submitted }">
+            <span class="labelValue">Resume Status:<span class="estricSign">*</span></span>
+            <span class="textValue">
+              <input type="radio" name="jobVisibility" ng-model="employeeFullProfileCtrl.candidateData.resumeStatus" value="public" checked>Public
+              <input type="radio" name="jobVisibility" ng-model="employeeFullProfileCtrl.candidateData.resumeStatus" value="private">Private
+            </span>
+            <p ng-show="newCandidate.jobVisibility.$invalid && newCandidate.jobVisibility.$pristine && submitted" class="help-block">Resume Status is required.</p>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12"
+          ng-class="{'has-error' : newCandidate.currently.$invalid && newCandidate.currently.$pristine && submitted }">
+            <span class="labelValue">Currently Workin In:<span class="estricSign">*</span></span>
+            <span class="textValue">
+              <input class="form-control" type="text" id="txtCurrentlyWorkingIn" value="" ng-model="employeeFullProfileCtrl.candidateData.currentlyWorkingIn" name="currentlyWorkingIn" ng-required="true">
+            </span>
+            <p class="myerror" ng-show="(employeeFullProfileRegForm.$submitted || employeeFullProfileRegForm.currentlyWorkingIn.$touched  || submitted) && employeeFullProfileRegForm.currentlyWorkingIn.$error.required">please fill out the field....!</p>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12">
+            <span class="labelValue">As:</span>
+            <span class="textValue">
+              <select class="form-control" type="text" placeholder="Requirement Type" id="txtReqType" value="" ng-model="employeeFullProfileCtrl.candidateData.workingAs">
+                <option value="">Select Type</option>
+                <option value="Direct Client">Direct Client</option>
+                <option value="Sub Contract">Sub Contract</option>
+              </select>
+            </span>
+          </div>
+          <div class="form-group col-lg-6 col-md-6 col-sm-12 col-xs-12 datePickerClass">
+            <span class="labelValue">Date of Birth:</span>
+            <span class="textValue">
+              <input type="text" class="form-control" uib-datepicker-popup="{{employeeFullProfileCtrl.format}}" id="dtpPostDate" ng-model="employeeFullProfileCtrl.candidateData.dateOfBirth" is-open="employeeFullProfileCtrl.opened" datepicker-options="employeeFullProfileCtrl.dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+              <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="employeeFullProfileCtrl.open1()"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </span>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <span class="labelValue">Highest Education:</span>
+            <span class="textValue">
+              <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employeeFullProfileCtrl.educationData track by item.masterId" ng-model="employeeFullProfileCtrl.candidateData.educationData">
+                <option value="" selected disabled hidden>Select higher education</option>
+              </select>
+            </span>
+          </div>
+          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <span class="labelValue">Year:</span>
+            <span class="textValue">
+              <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employeeFullProfileCtrl.experienceType track by item.masterId" ng-model="employeeFullProfileCtrl.candidateData.year1">
+                <option value="" selected disabled hidden>Years of Experience</option>
+              </select>
+            </span>
+          </div>
+          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <span class="labelValue">University:</span>
+            <span class="textValue">
+              <input class="form-control" type="text" id="txtUniversity" value="" ng-model="employeeFullProfileCtrl.candidateData.highestUniversity">
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <span class="labelValue">Other Education:</span>
+            <span class="textValue">
+              <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employeeFullProfileCtrl.educationData track by item.masterId" ng-model="employeeFullProfileCtrl.candidateData.educationData">
+                <option value="" selected disabled hidden>Select higher education</option>
+              </select>
+            </span>
+          </div>
+          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <span class="labelValue">Year:</span>
+            <span class="textValue">
+              <select class="form-control" ng-options="item.displayTitle as item.displayTitle for item in employeeFullProfileCtrl.experienceType track by item.masterId" ng-model="employeeFullProfileCtrl.candidateData.year2">
+                <option value="" selected disabled hidden>Years of Experience</option>
+              </select>
+            </span>
+          </div>
+          <div class="form-group col-lg-4 col-md-4 col-sm-12 col-xs-12">
+            <span class="labelValue">University:</span>
+            <span class="textValue">
+              <input class="form-control" type="text" id="txtUniversity" value="" ng-model="employeeFullProfileCtrl.candidateData.otherEduUniversity">
+            </span>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group  col-lg-6 col-md-6 col-sm-12 col-xs-12 addNewJobForm">
+            <input type="submit" class="btnSubmit" ng-disabled="isDisabled" value="Add Candidate" title="Add Candidate" >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

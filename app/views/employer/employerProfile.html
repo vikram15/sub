@@ -1,0 +1,46 @@
+<div class="employerProfile" id="employerWrapper">
+  <div style="padding:25px;" ng-controller="LoginCtrl" ng-include src ="'views/employer/employerHeader.html'"></div>
+  <div class="section-separator">
+    <div class="dialogContainer">
+      <div class="employerProfileForm">
+        <div class="pageTitle"><h2>Almost There!!</h2></div>
+        <form role="form" name="reigstrationForm"  class="ProfileEmployerForm" novalidate>
+           <div class="form-group text-left">
+              <label for="industryType" class="hidden-xs">Industry Type:<span class="estricSign">*</span></label>
+              <span class="textValue">
+                <select class="form-control"  ng-options="item.displayTitle as item.displayTitle for item in employerProfileCtrl.industryType track by item.masterId" ng-model="employerProfileCtrl.selectedIndustryType">
+                  <option value="" selected disabled hidden>{{employerProfileCtrl.selectedIndustryType}}</option>
+                </select>
+                <!-- {{employerProfileCtrl.selectedIndustryType}}... -->
+              </span>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.location.$touched || submitted) && reigstrationForm.location.$error.required }">
+              <label for="location" class="hidden-xs">Location:<span class="estricSign">*</span></label>
+              <input  typeahead-on-select='employerProfileCtrl.doSomething(jobLocation)' id="Autocomplete2" class="form-control" name="location" ng-autocomplete options="options" details="details" class="form-control" type="text" placeholder="Location" id="txtJobLocation" value="" ng-model="employerProfileCtrl.location" ng-required="true" />
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.location.$touched || submitted) && reigstrationForm.location.$error.required" class="help-block">Location is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.website.$touched || submitted) && reigstrationForm.website.$error.required }">
+              <label for="website" class="hidden-xs">Website:<span class="estricSign">*</span></label>
+              <input type="text" class="form-control" name="website" id="Website" ng-model="employerProfileCtrl.website" placeholder="Website" ng-required="true"/>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.website.$touched || submitted) && reigstrationForm.website.$error.required" class="help-block">Website is required.</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : (reigstrationForm.$submitted || reigstrationForm.contactNumber.$touched || submitted) && reigstrationForm.contactNumber.$error.required }">
+              <label for="contactNumber" class="hidden-xs">Contact Number:<span class="estricSign">*</span></label>
+              <input type="number" class="form-control" ng-pattern="/^[789]\d{9}$/" name="contactNumber" id="contactNumber" ng-model="employerProfileCtrl.contactNumber" placeholder="Contact Number" ng-required="true"/>
+              <p ng-show="(reigstrationForm.$submitted || reigstrationForm.contactNumber.$touched || submitted) && reigstrationForm.contactNumber.$error.required" class="help-block">Contact Number is required.</p>
+              <p class="myerror" ng-show="reigstrationForm.contactNumber.$error.pattern">Invalid number...!</p>
+           </div>
+           <div class="form-group text-left" ng-class="{'has-error' : reigstrationForm.contactName.$invalid && reigstrationForm.contactName.$pristine && submitted }">
+              <label for="ContactName" class="hidden-xs">Contact Name:</label>
+              <input type="text" class="form-control" name="contactName" id="contactName" ng-model="employerProfileCtrl.contactName" placeholder="Contact Name" ng-required="true"/>
+              <p ng-show="reigstrationForm.contactName.$invalid && reigstrationForm.contactName.$pristine && submitted" class="help-block">Contact Name is required.</p>
+           </div>
+           <div class="form-group signInForm-submitBtnwrapper">
+              <input type="submit" class="btnSubmit" ng-click="reigstrationForm.$valid && employerProfileCtrl.onProfileFormSubmit(reigstrationForm.$valid)" value="Submit Profile" title="Submit Profile">
+              <input type="button" class="btnCancel" value="Cancel" title="Cancel">
+           </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

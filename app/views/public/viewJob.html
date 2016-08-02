@@ -1,0 +1,64 @@
+<div class="row">
+  <div class="col-xs-12 separatorJobs">
+    <div class="big-boxes">
+      <div class="row">
+        <div class="col-sm-9 col-xs-12">
+          <div class="row">
+            <div class="col-xs-12">
+              <span class="jobTitle job-data">{{viewJobCtrl.result.jobTitle}}</span>
+            </div>
+            <div class="col-xs-12">
+              <span class="aboutCompany job-data">{{viewJobCtrl.result.aboutCompany}}</span>
+            </div>
+            <div class="col-xs-12">
+              <span class="MinMaxYears job-data">
+                {{viewJobCtrl.result.expFrom}} - {{viewJobCtrl.result.expTo}},&nbsp;
+              </span>
+              <span class="location job-data">
+                {{viewJobCtrl.result.location}}
+              </span>
+            </div>
+            <div class="col-xs-12">
+              <span class="skills job-data">
+                Key skills:
+              </span>
+              <span class="job-data">
+                {{viewJobCtrl.result.skill}}
+              </span>
+            </div>
+            <div class="col-xs-12">
+              <span class="job-desc job-data">
+                Job description:
+              </span>
+              <span class="job-data">
+                {{viewJobCtrl.result.jobDesc}}
+              </span>
+            </div>
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-sm-6 col-xs-12">
+                  <span class="job-data">
+                    Rate Per Hour : {{viewJobCtrl.result.rateType}}
+                  </span>
+                </div>
+                <div class="col-sm-6 col-xs-12">
+                  <span class="job-data">
+                    Posted On :
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-xs-12 separator">
+              <span class="dlmButtons">
+                <input type="button" class="btnSubmit" value="Apply" ng-click="viewJobCtrl.openCandidates()" />
+              </span>
+              <span class="dlmButtons">
+                <input type="button" class="btnCancel" value="Back" ng-click="viewJobCtrl.backToDashboard()" />
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<!-- editTeamMembersCtrl-->
+<div class="row" id="editTeamMembers">
+  <div class="col-xs-12 separatorJobs">
+    <div class="big-boxes">
+      <div class="row">
+        <h4 class="text-center">Edit Team Members</h4>
+        <hr>
+      </div>
+      <div class="row">
+        <div class="employer-add-new-job employer-all-pages container-fluid" id="editTeamMembers">
+          <form id="formEditTeamMembers" autocomplete="off" class="row" novalidate="novalidate" ng-submit="editTeamMembersCtrl.updateTeamMembers()">
+            <div class="employer-fields-section">
+              <div class="row">
+                <div class="form-group col-sm-9">
+                  <span class="labelValue col-sm-4 pull-left">First Name:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input class="form-control" type="text" placeholder="First Name" id="txtFirstName" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.firstName">
+                  </span>
+                </div>
+                <div class="form-group col-sm-9">
+                  <span class="labelValue col-sm-4 pull-left">Last Name:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input class="form-control" type="text" placeholder="Last Name" id="txtLastName" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.lastName">
+                  </span>
+                </div>
+                <div class="form-group col-sm-9">
+                  <span class="labelValue col-sm-4 pull-left">Email:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input class="form-control" type="text" placeholder="Eg:email@company.com" id="txtEmail" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.email">
+                  </span>
+                </div>
+                <div class="form-group col-sm-9">
+                  <span class="labelValue col-sm-4 pull-left">Mobile:<span class="estricSign">*</span></span>
+                  <span class="textValue col-sm-8">
+                    <input type="text" class="form-control" placeholder="10 Digits only" id="txtMobileNumber" value="" ng-model="editTeamMembersCtrl.defaultTeamMember.mobile" />
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group  col-lg-8 text-center addNewJobForm">
+                  <input type="submit" class="btnSubmit" ng-disabled="isDisabled" value="Submit" title="Submit">
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

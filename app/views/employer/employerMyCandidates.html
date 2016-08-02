@@ -1,0 +1,64 @@
+<div class="employer-my-added-candidates employer-all-pages container-fluid row" id="employerMyAllPostedJobs">
+  <!-- employerMyCandidatesCtrl -->
+  <h3>My Candidates</h3>
+
+  <div class="text-center" ng-show="employerMyCandidatesCtrl.result.length <= 0">
+    <h4>No Candidate Found</h4>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 separatorJobs" ng-repeat="candidateData in employerMyCandidatesCtrl.result">
+      <div class="big-boxes">
+        <div class="row">
+          <div class="col-sm-9 col-xs-12">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="jobTitle candidate-data">{{candidateData.firstName}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="aboutCompany candidate-data">{{candidateData.lastName}}</span>
+              </div>
+              <div class="col-xs-12">
+                <span class="location candidate-data">
+                  {{candidateData.currentLocation}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="skills candidate-data">
+                  Email
+                </span>
+                <span class="candidate-data">
+                  {{candidateData.email}}
+                </span>
+              </div>
+              <div class="col-xs-12">
+                <span class="job-desc candidate-data">
+                  Mobile:
+                </span>
+                <span class="candidate-data">
+                  {{candidateData.mobileNo}}
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-3 col-xs-12 text-right">
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="dlmButtons">
+                  <input type="button" ng-show="candidateData.active === true" value="Inactivate" title="Inactivate" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'inactivate')"/>
+                  <input type="button" ng-show="candidateData.active === false" value="Activate" title="Active" ng-click="employerMyCandidatesCtrl.activeInactive(candidateData, 'activate')"/>
+                </span>
+                <span class="dlmButtons">
+                  <input type="button" ng-show="candidateData.placed === false"  value="Place"         title="Place" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData,'place')"/>
+                  <input type="button" ng-show="candidateData.placed === true"  value="Add To Bench" title="Add To Bench" ng-click="employerMyCandidatesCtrl.placeOrOnBenchFunction(candidateData, 'bench')"/>
+                </span>
+                <span class="dlmButtons">
+                  <input type="button" value="Edit" title="Edit" ng-click="employerMyCandidatesCtrl.editCandidate(candidateData)"/>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

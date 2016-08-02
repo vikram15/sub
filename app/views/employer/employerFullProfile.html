@@ -1,0 +1,180 @@
+<div class="employerProfile" id="employerWrapper">
+  <h3>My Profile</h3>
+  <div class="section-separator">
+    <div class="col-sm-9 col-xs-12">
+      <div class="employerProfileForm big-boxes">
+         <span class="box-header highlightValue">Company Info</span>
+         <div class="form-group text-left">
+            <div class="row">
+              <div class="col-xs-3">Name</div>
+              <div class="col-xs-9">
+                <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.name}}</span>
+                <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.name" ng-bind="employerFullProfileCtrl.result.name" placeholder="" required/>
+              </div>
+            </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Address</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.address}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.address" ng-bind="employerFullProfileCtrl.result.address" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Contact Number</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.contactNumber}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.contactNumber"  ng-bind="employerFullProfileCtrl.result.contactNumber" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Location</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.location}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.location"  ng-bind="employerFullProfileCtrl.result.location" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">About Company</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.aboutCompany}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.aboutCompany" ng-bind="employerFullProfileCtrl.aboutCompany" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <span class="box-header highlightValue">Additional Info</span>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Established Date</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.establishedAt}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.establishedAt"  ng-bind="employerFullProfileCtrl.result.establishedAt" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Current Revenue / Year</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.revenue}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.revenue" ng-bind="employerFullProfileCtrl.result.revenue" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Total Employees</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editCompanyInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.employeeCount}}</span>
+               <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.employeeCount" ng-bind="employerFullProfileCtrl.employeeCount" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group signInForm-submitBtnwrapper">
+            <input ng-hide="employerFullProfileCtrl.editCompanyInfo" type="button" ng-click="employerFullProfileCtrl.editCompanyInfoBtn()" class="btnSubmit" value="Edit Company Info" title="Edit Company Info">
+            <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="button" ng-click="employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Company Info" title="Save Company Info">
+            <input ng-show="employerFullProfileCtrl.editCompanyInfo" type="button" ng-click="employerFullProfileCtrl.cancelCompanyInfo()" class="btnSubmit" value="Cancel Company Info" title="Cancel Company Info">
+         </div>
+      </div>
+
+
+      <div class="employerProfileForm big-boxes">
+         <span class="box-header highlightValue">Social Links</span>
+         <div class="form-group text-left">
+            <div class="row">
+              <div class="col-xs-3">Facebook</div>
+              <div class="col-xs-9">
+                <span ng-hide="employerFullProfileCtrl.editSocialInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.facebook}}</span>
+                <input ng-show="employerFullProfileCtrl.editSocialInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.facebook" ng-bind="employerFullProfileCtrl.fbAccountName" placeholder="" required/>
+              </div>
+            </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Google Plus</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editSocialInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.googlePlus}}</span>
+               <input ng-show="employerFullProfileCtrl.editSocialInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.googlePlus" ng-bind="employerFullProfileCtrl.address" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Twitter</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editSocialInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.twitter}}</span>
+               <input ng-show="employerFullProfileCtrl.editSocialInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.twitter"  ng-bind="employerFullProfileCtrl.contactNumber" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Linked In</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editSocialInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.linkedIn}}</span>
+               <input ng-show="employerFullProfileCtrl.editSocialInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.linkedIn"  ng-bind="employerFullProfileCtrl.location" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Website</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editSocialInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.website}}</span>
+               <input ng-show="employerFullProfileCtrl.editSocialInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.website" ng-bind="employerFullProfileCtrl.aboutCompany" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group signInForm-submitBtnwrapper">
+            <input ng-hide="employerFullProfileCtrl.editSocialInfo" type="button" ng-click="employerFullProfileCtrl.editSocialInfoBtn()" class="btnSubmit" value="Edit Social Info" title="Edit Social Info">
+            <input ng-show="employerFullProfileCtrl.editSocialInfo" type="button" ng-click="employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Social Info" title="Save Social Info">
+            <input ng-show="employerFullProfileCtrl.editSocialInfo" type="button" ng-click="employerFullProfileCtrl.cancelSocialInfo()" class="btnSubmit" value="Cancel Social Info" title="Cancel Social Info">
+         </div>
+      </div>
+
+      <div class="employerProfileForm big-boxes">
+         <span class="box-header highlightValue">Expertise</span>
+         <div class="form-group text-left">
+            <div class="row">
+              <div class="col-xs-3">Doing Services In</div>
+              <div class="col-xs-9">
+                <span ng-hide="employerFullProfileCtrl.editExpertiseInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.service}}</span>
+                <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.service" ng-bind="employerFullProfileCtrl.result.service" placeholder="" required/>
+              </div>
+            </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Expert In</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editExpertiseInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.expert}}</span>
+               <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.expert" ng-bind="employerFullProfileCtrl.result.expert" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group text-left">
+           <div class="row">
+             <div class="col-xs-3">Major Clients In</div>
+             <div class="col-xs-9">
+               <span ng-hide="employerFullProfileCtrl.editExpertiseInfo" class="span-control" id="spnEmployer">{{employerFullProfileCtrl.result.majorClient}}</span>
+               <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="text" class="form-control" id="txtEmployer" ng-model="employerFullProfileCtrl.result.majorClient"  ng-bind="employerFullProfileCtrl.result.majorClient" placeholder="" required/>
+             </div>
+           </div>
+         </div>
+         <div class="form-group signInForm-submitBtnwrapper">
+            <input ng-hide="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.editExpertiseInfoBtn()" class="btnSubmit" value="Edit Expertise Info" title="Edit Expertise Info">
+            <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.onProfileFormSubmit()" class="btnSubmit" value="Save Expertise Info" title="Save Expertise Info">
+            <input ng-show="employerFullProfileCtrl.editExpertiseInfo" type="button" ng-click="employerFullProfileCtrl.cancelExpertiseInfo()" class="btnSubmit" value="Cancel Expertise Info" title="Cancel Expertise Info">
+         </div>
+      </div>
+
+    </div>
+  </div>
+</div>
